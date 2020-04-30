@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+    {% block head %}
+        <script>
+            function goBack() {
+                window.history.back();
+            }
+        </script>
+    {% endblock %}
+
+    {% block body %}
+    <div style="margin-left:25%;padding:1px">
+        <h1>User #{{ data.user_id }}</h1>
+    </div>
+    <div style="margin-left:80%;padding:1px;margin-right:10%;overflow:hidden;float:left">
+        <button type="button" onclick="goBack()" class="btn btn-default">Back</button>
+        <button type="button" class="btn btn-default">Edit</button>
+        <p></p>
+    </div>
+    <div style="margin-left:25%;padding:1px">
+        <table>
+            {% for key, value in data.items() %}
+                <tr>
+                    
+                {% if key == "name" %}
+                    <td><b>{{key}}</b></td>
+                    <td id="value-editable" contenteditable="true">{{value}}</td>
+                {% elif key == "email" %}
+                    <td><b>{{key}}</b></td>
+                    <td id="value-editable" contenteditable="true">{{value}}</td>
+                {% else %}
+                    <td><b>{{key}}</b></td>
+                    <td id="value" contenteditable="false">{{value}}</td>
+                {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endblock %}

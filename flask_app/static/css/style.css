@@ -1,0 +1,97 @@
+.topnav {
+    width: 100%;
+    height: 60px;
+    background-color: rgb(45, 127, 182);
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: right;
+    display: block;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    padding: 18px 16px;
+    text-decoration: none;
+    font-size: 18px;
+    overflow:hidden;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: rgb(82, 141, 180);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+
+/* Add an active class to highlight the current page */
+.topnav a.active {
+    background-color: rgb(255, 255, 255);
+    color: rgb(68, 68, 68);
+}
+
+/* Hide the link that should open and close the topnav on small screens */
+.topnav .icon {
+    display: none;
+}
+
+menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    width: 15%;
+    background-color: #e7e7e7;
+    height: 100%; /* Full height */
+    position: fixed; /* Make it stick, even on scroll */
+    overflow: auto;
+    font-size: 18px;
+}
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+li a:hover:not(.active) {
+    background-color: #d4d4d4;
+    color: black;
+    text-decoration: none;
+}
+li.active {
+    background-color: rgb(255, 255, 255);
+    color: rgb(68, 68, 68);
+}
+.nav li.active {
+    background: #eee
+}
+table {
+    border-collapse: collapse;
+    width: 90%;
+}
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+#value-editable {
+    background-color: white;
+    border-width: 1px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+th {
+    background-color: rgb(90, 90, 90);
+    color: white;
+}
+tr:hover {
+    background-color:#e2e0e0;
+}
+#myInput {
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    width: 90%;
+    font-size: 18px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+}

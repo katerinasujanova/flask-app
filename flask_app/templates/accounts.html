@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+    {% block head %}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% endblock %}
+
+    {% block body %}
+    
+    <div  style="margin-left:25%;padding:1px">
+        <h1>All users data</h1>
+        <p></p>
+        <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for users.." title="Type in a name">
+        <p></p>
+        <table id="accounts_table">
+            <tr>
+                <th></th>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Created at</th>
+                <th>Last login</th>
+            </tr>
+            {% for user in data %}
+                <tr class='clickable-row' data-href="/accounts/{{ user.user_id }}" method=POST>
+                    <td><input type="checkbox" name="name1">&nbsp;</td>
+                    {% for value in user.values() %}
+                        
+                        <td id="sortable">{{value}}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <script>
+        function myFunction() {
+          var input, filter, table, tr, td, i, txtValue;
+          input = document.getElementById("myInput");
+          filter = input.value.toUpperCase();
+          table = document.getElementById("accounts_table");
+          tr = table.getElementsByTagName("tr");
+          for (i = 1; i < tr.length; i++) {
+            td = tr[i].getElementsByTagName("td")[2];
+            if (td) {
+              txtValue = td.textContent || td.innerText;
+              if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                tr[i].style.display = "";
+              } else {
+                tr[i].style.display = "none";
+              }
+            }       
+          }
+        }
+    </script>
+    <script>
+        jQuery(document).ready(function($) {
+            $(".clickable-row").dblclick(function() {
+                window.location = $(this).data("href");
+            });
+        });
+    </script>
+    <script>
+        function sortList() {
+          var list, i, switching, b, shouldSwitch;
+          list = document.getElementById("sortable");
+          switching = true;
+          /* Make a loop that will continue until
+          no switching has been done: */
+          while (switching) {
+            // Start by saying: no switching is done:
+            switching = false;
+            b = list.getElementsByTagName("LI");
+            // Loop through all list items:
+            for (i = 0; i < (b.length - 1); i++) {
+              // Start by saying there should be no switching:
+              shouldSwitch = false;
+              /* Check if the next item should
+              switch place with the current item: */
+              if (b[i].innerHTML.toLowerCase() > b[i + 1].innerHTML.toLowerCase()) {
+                /* If next item is alphabetically lower than current item,
+                mark as a switch and break the loop: */
+                shouldSwitch = true;
+                break;
+              }
+            }
+            if (shouldSwitch) {
+              /* If a switch has been marked, make the switch
+              and mark the switch as done: */
+              b[i].parentNode.insertBefore(b[i + 1], b[i]);
+              switching = true;
+            }
+          }
+        }
+        </script>
+    {% endblock %}
